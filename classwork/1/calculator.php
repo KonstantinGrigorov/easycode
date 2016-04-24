@@ -7,5 +7,5 @@ class Calculator implements iCalculator
 
 }
 
-//$calculator = new Calculator();
-//$calculator->plus(1, 2); // 3
+$calculator = new Calculator();
+$calculator->plus(1, 2); // 3
