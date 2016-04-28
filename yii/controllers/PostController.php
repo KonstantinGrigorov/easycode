@@ -140,4 +140,17 @@ class PostController extends Controller
 //        print_r($posts);
 //        echo '</pre>';
     }
+
+    public function actionAll() {
+        return $this->render(
+            'all',
+            array(
+                'posts' => Post::find()->orderBy('date_creation DESC')->all()
+            )
+        );
+    }
+
+    public function actionPost($id) {
+
+    }
 }
