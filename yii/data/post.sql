@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS `post`;
+
 CREATE TABLE `post` (
   `id` int(11) unsigned NOT NULL,
   `title` varchar(255) DEFAULT NULL,
