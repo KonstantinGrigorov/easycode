@@ -1,7 +1,9 @@
 <?php
-require_once "house.php";
-require_once 'woman.php';
-require_once 'man.php';
+namespace kharkiv\city;
+
+require_once "../house.php";
+require_once '../woman.php';
+require_once '../man.php';
 
 class City {
 	protected $name;
@@ -47,15 +49,3 @@ class City {
         return $this->_name;
     }
 }
-$city = new City('Kharkiv');
-$house = new House('house #1');
-$city->buildHouse($house);
-
-$man = new Man(1, 'Alexander', 18);
-$woman = new Woman(2, 'Olga', 19);
-
-//$city->addCitzien($man);
-$city->addCitzien($woman);
-
-$house->setOwner($woman);
-$man->live($house);
