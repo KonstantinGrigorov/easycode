@@ -26,7 +26,7 @@ class Power {
     }
     
     public function quadruple_degree(){
-        return 'The fourth degree of this number is '.($this->inputNewNumber())
+        return ($this->inputNewNumber())
                 *($this->inputNewNumber())*($this->inputNewNumber())
          *($this->inputNewNumber()).'<br>';
     }
@@ -41,9 +41,9 @@ class Power {
 
 $somenumber = new Power();
 //echo Power::$inputNumber;
-echo $somenumber->getNumber();
-echo $somenumber ->inputNewNumber();
-echo $somenumber -> double_degree();
-echo $somenumber ->triple_degree();
-echo $somenumber ->quadruple_degree();
-echo $somenumber ->fivefold_degree();
+//echo $somenumber->getNumber();
+//echo $somenumber ->inputNewNumber();
+//echo $somenumber -> double_degree();
+//echo $somenumber ->triple_degree();
+echo 'The fourth degree of this number is '.$somenumber ->quadruple_degree();
+//echo $somenumber ->fivefold_degree();
