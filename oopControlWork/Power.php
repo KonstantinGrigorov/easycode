@@ -1,32 +1,49 @@
 <?php
 
+
 class Power {
-    //public $inputNumber;
+    static public $inputNumber;
     
-    //public function __construct($number){
-    //    $this->inputNumber = $number;
-    //}
-    
-    public function double_degree($number){
-        return $number*$number.'<br>';
+    public function __construct($yourNumber=2){
+        Power::$inputNumber = $yourNumber;
     }
     
-    public function triple_degree($number){
-        return $result = $number*$number*$number.'<br>';
+     public function getNumber() {
+        return Power::$inputNumber.'<br>';
+    }
+        
+    public function inputNewNumber (){
+        return Power::$inputNumber = $this->getNumber();
     }
     
-    public function quadruple_degree($number){
-        return 'The fourth degree of this number is '.$result = $number*$number*$number*$number.'<br>';
+    public function double_degree(){
+        return ($this->inputNewNumber())*($this->inputNewNumber()).'<br>';
     }
     
-    public function fivefold_degree($number){
-        return $result = $number*$number*$number*$number*$number.'<br>';
+    public function triple_degree(){
+        return ($this->inputNewNumber())*($this->inputNewNumber())*
+        ($this->inputNewNumber()).'<br>';
+    }
+    
+    public function quadruple_degree(){
+        return 'The fourth degree of this number is '.($this->inputNewNumber())
+                *($this->inputNewNumber())*($this->inputNewNumber())
+         *($this->inputNewNumber()).'<br>';
+    }
+    
+    public function fivefold_degree(){
+        return ($this->inputNewNumber())*($this->inputNewNumber())*
+        ($this->inputNewNumber())*($this->inputNewNumber())*
+        ($this->inputNewNumber()).'<br>';
     }    
     
 }
 
-$number1 = new Power;
-echo $number1 -> double_degree(2);
-echo $number1 ->triple_degree(4);
-echo $number1 ->quadruple_degree(1);
-echo $number1 ->fivefold_degree(3);
+$somenumber = new Power();
+//echo Power::$inputNumber;
+echo $somenumber->getNumber();
+echo $somenumber ->inputNewNumber();
+echo $somenumber -> double_degree();
+echo $somenumber ->triple_degree();
+echo $somenumber ->quadruple_degree();
+echo $somenumber ->fivefold_degree();
