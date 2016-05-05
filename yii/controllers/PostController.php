@@ -151,6 +151,8 @@ class PostController extends Controller
     }
 
     public function actionPost($id) {
-
+        $_GET['id'];
+        \Yii::$app->request->get('id');
+        echo $id;
     }
 }
