@@ -153,4 +153,12 @@ class PostController extends Controller
     public function actionPost($id) {
 
     }
+
+
+    public function actionHello()
+    {
+        return $this->render('hello');
+    }
 }
+
+ 
