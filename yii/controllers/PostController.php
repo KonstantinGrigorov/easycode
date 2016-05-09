@@ -151,13 +151,13 @@ class PostController extends Controller
     }
 
     public function actionPost($id) {
-
+            echo $id;
     }
 
 
     public function actionHello()
     {
-        return $this->render('hello');
+        return $this->render('hello', ['newVar'=>'hello World!']);
     }
 }
 
