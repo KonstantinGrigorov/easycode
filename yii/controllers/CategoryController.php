@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Post;
+use app\models\Category;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PostController implements the CRUD actions for Post model.
+ * CategoryController implements the CRUD actions for Category model.
  */
-class PostController extends Controller
+class CategoryController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,13 +30,13 @@ class PostController extends Controller
     }
 
     /**
-     * Lists all Post models.
+     * Lists all Category models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Post::find(),
+            'query' => Category::find(),
         ]);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class PostController extends Controller
     }
 
     /**
-     * Displays a single Post model.
+     * Displays a single Category model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class PostController extends Controller
     }
 
     /**
-     * Creates a new Post model.
+     * Creates a new Category model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Post();
+        $model = new Category();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class PostController extends Controller
     }
 
     /**
-     * Updates an existing Post model.
+     * Updates an existing Category model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class PostController extends Controller
     }
 
     /**
-     * Deletes an existing Post model.
+     * Deletes an existing Category model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,57 +107,18 @@ class PostController extends Controller
     }
 
     /**
-     * Finds the Post model based on its primary key value.
+     * Finds the Category model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Post the loaded model
+     * @return Category the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Post::findOne($id)) !== null) {
+        if (($model = Category::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-
-
-    public function actionTest() {
-        $post = new Post();
-        $post->title = 'AR title11111';
-        $post->text = 'AR text';
-        $post->date_creation = date('Y-m-d H:i:s');
-        if (!$post->save()) {
-            echo '<pre>';
-            print_r($post->getErrors());
-            echo '</pre>';
-        }
-//        $posts = Post::find()->all();
-//        echo '<pre>';
-//        print_r($posts);
-//        echo '</pre>';
-    }
-
-    public function actionAll() {
-        return $this->render(
-            'all',
-            array(
-                'posts' => Post::find()->orderBy('date_creation DESC')->all()
-            )
-        );
-    }
-
-    public function actionPost($id) {
-            echo $id;
-    }
-
-
-    public function actionHello()
-    {
-        return $this->render('hello', ['newVar'=>'hello World!']);
-    }
-
 }
-
- 

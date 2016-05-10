@@ -10,6 +10,9 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
+use app\models\Post;
+use app\models\Category;
+
 class SiteController extends Controller
 {
     public function behaviors()
@@ -50,7 +53,20 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $categories = Category::find()->all();
+        $categoryId = Yii::$app->request->get('category_id', 0); // $_GET['category_id'];
+        if ($categoryId) {
+            $posts = Post::find()->where(['category_id' => $categoryId])->orderBy('date_creation DESC')->all();
+        } else {
+            $posts = Post::find()->orderBy('date_creation DESC')->all();
+        }
+        return $this->render(
+            'index',
+            [
+                'allPosts' => $posts,
+                'categories' => $categories
+            ]
+        );
     }
 
     public function actionLogin()
