@@ -6,15 +6,15 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Posts';
+$this->title = 'Categories';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="post-index">
+<div class="category-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Post', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Category', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -22,16 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'category_id',
-            'title',
-            'text:ntext',
-            [
-                'class' => 'yii\grid\DataColumn',
-                'label' => 'Date creation',
-                'value' => function($data) {
-                    return date('Y-m-d H:i', strtotime($data->date_creation));
-                }
-            ],
+            'name',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

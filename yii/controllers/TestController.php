@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\People;
 use app\models\Power;
 use app\models\Rectangle;
+use app\models\Test;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -50,5 +52,22 @@ class TestController extends Controller
                 'rectangle' => $rectangle
             ]
         );
+    }
+
+    public function actionTest() {
+        $people = new People();
+        $attrs = [
+            'lastname' => 'name',
+            'name' => 'name'
+        ];
+        $people->attributes = $_POST;
+        $people->save();
+        if ($people->save()) {
+            //
+        } else {
+            echo '<pre>';
+            print_r($people->getErrors());
+            echo '</pre>';
+        }
     }
 }
