@@ -2,15 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Тест</title>
-    <script src="http://code.jquery.com/jquery-2.2.2.js"> </script>
+    <title>Login</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!--<script src="http://code.jquery.com/jquery-2.2.2.js"> </script>-->
     <script> 
-    /*function funcBefore () {
+    function funcBefore () {
     	$("#information").text ("Ожидание данных");
     }
     function funcSuccess (data) {
     	$("#information").text (data);
-    }*/
+    }
 	$(document).ready (function (){
 		$("#load").bind("click", function(){
 			var admin = "Admin";
@@ -24,12 +25,13 @@
 			});
 		});
 
-	$("#done").bind("click", function () {
+	$("#done").bind("click", function (){
+		var admin = "Admin";
 			$.ajax ({
 				url: "check.php",
 				type: "POST",
-				data: ({name: $["#name"].val()}),
-				dataType: "html",
+				data: ({name: $("#name").val()}),
+				dataType: "text",
 				beforeSend: function () {
     	$("#information").text ("Ожидание данных");
    										},
@@ -38,7 +40,7 @@
 							alert("Имя занято!");
 						else
     	$("#information").text(data);
-    									}
+    			}
 			});
 		});
 

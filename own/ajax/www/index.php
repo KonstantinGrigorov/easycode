@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Тест</title>
-    <script src="http://code.jquery.com/jquery-2.2.2.js"> </script>
+    <!--<script src="http://code.jquery.com/jquery-2.2.2.js"> </script>-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script> 
     function funcBefore () {
     	$("#information").text ("Ожидание данных");
