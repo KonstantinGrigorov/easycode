@@ -27,7 +27,7 @@ $this->beginPage();
     <meta charset="<?= Yii::$app->charset ?>">
     <?php $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1']); ?>
 
-    <title><?= Yii::$app->name ?>"></title>
+    <title><?= Yii::$app->name ?></title>
     <?php $this->head(); ?>
     
 </head>
