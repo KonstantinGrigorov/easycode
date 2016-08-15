@@ -8,7 +8,6 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-use app\widgets\LangWidget;
 
 AppAsset::register($this);
 ?>
@@ -26,11 +25,10 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    
     <?php
-    NavBar::begin([/*
+    NavBar::begin([
         'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,*/
+        'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -38,29 +36,28 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            //['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Список дел', 'url' => ['/site/hello']],
-            ['label' => 'Админка', 'url' => ['/admin']],
-            //Скрываем форму логина
-            /*Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+            ['label' => 'Главная', 'url' => ['/site/index']],
+            ['label' => 'О нас', 'url' => ['/site/about']],
+            ['label' => 'Посты (post/index)', 'url' => ['/post/index']],
+            ['label' => 'Регистрация', 'url' => ['/site/signup']],
+            Yii::$app->user->isGuest ? (
+                ['label' => 'Войти', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Выйти (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link']
                 )
                 . Html::endForm()
                 . '</li>'
-            )*/
+            )
         ],
     ]);
     NavBar::end();
     ?>
 
     <div class="container">
-        <?= LangWidget::widget();?>
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

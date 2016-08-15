@@ -8,7 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-use app\widgets\LangWidget;
+use mdm\admin\components\Helper;
 
 AppAsset::register($this);
 ?>
@@ -19,48 +19,46 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Yii::$app->name ?></title>
+    <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    
     <?php
-    NavBar::begin([/*
+$menuItems =  [
+          ['label' => 'Главная', 'url' => ['/admin/default/index']],
+            ['label' => 'Посты', 'url' => ['/admin/post/index']],
+            ['label' => 'Пользователи', 'url' => ['/rbac/default/index']],
+            Yii::$app->user->isGuest ? (
+                ['label' => 'Войти', 'url' => ['/site/login']]
+            ) : (
+                '<li>'
+                . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
+                . Html::submitButton(
+                    'Выйти (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link']
+                )
+                . Html::endForm()
+                . '</li>'
+            )
+        ];
+    NavBar::begin([
         'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,*/
+        'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            //['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Список дел', 'url' => ['/site/hello']],
-            ['label' => 'Админка', 'url' => ['/admin']],
-            //Скрываем форму логина
-            /*Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link']
-                )
-                . Html::endForm()
-                . '</li>'
-            )*/
-        ],
+        'items' => Helper::filter($menuItems),
     ]);
     NavBar::end();
     ?>
 
     <div class="container">
-        <?= LangWidget::widget();?>
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

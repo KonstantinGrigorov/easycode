@@ -8,9 +8,11 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
+        
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'ijMQy8rsN-clzFYqiU0b4j7s_PdLM216',
+            'class' => 'app\components\LangRequest'
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -26,12 +28,17 @@ $config = [
                      'class' => 'yii\web\UrlManager', // Disable index.php
                                 'showScriptName' => false, // Disable r= routes
                                 'enablePrettyUrl' => true,
+                                //'class'=>'app\components\LangUrlManager',
                                 'rules' => array(
                                     '<controller:\w+>/<id:\d+>' => '<controller>/view', 
                                     '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                                     '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>', 
-                                    '<modules:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<modules>/<controller>/<action>'
+                                    '<modules:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<modules>/<controller>/<action>',
+                                    //'/' => 'site/index',
+                                    //'<controller:\w+>/<action:\w+>/*'=>'<controller>/<action>',
+                                    
                                 ), 
+                                    
                     ],
                     
         'mailer' => [
@@ -59,6 +66,19 @@ $config = [
             ],
         ],
         */
+        'language'=>'ru-RU',
+                'i18n' => [
+                    'translations' => [
+                        '*' => [
+                            'class' => 'yii\i18n\PhpMessageSource',
+                            'basePath' => '@webroot/lang',
+                            'sourceLanguage' => 'en',
+                            'fileMap' => [
+                                //'main' => 'main.php',
+                            ],
+                        ],
+                    ],
+                ],
     ],
     'modules' => [
         'admin' => [
