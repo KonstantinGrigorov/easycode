@@ -42,7 +42,7 @@ $config = [
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-    //$config['bootstrap'][] = 'debug';
+    $config['bootstrap'][] = 'gii';
     $config['modules']['debug'] = 'yii\debug\Module';
     $config['modules']['gii'] = 'yii\gii\Module';
 }
