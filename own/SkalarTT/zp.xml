@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HumanList>
+<worker id="1">
+        <fio>Иванов Иван Иванович</fio>
+		<birthdate>20.03.1980</birthdate>
+		<department>Marketing</department>
+		<position>Employee</position>
+		<paymenttype>per_month</paymenttype>
+		<payment>someFormula1</payment>
+	  
+</worker>
+<worker id="2">
+        <fio>Зигмунд Фрейд</fio>
+		<BirthDate>06.05.1856</BirthDate>
+		<department>Analytical</department>
+		<position>Top</position>
+		<paymenttype>per_hour</paymenttype>
+		<payment>someFormula2</payment>
+	  
+</worker>
+<worker id="3">
+        <fio>Сергеев Сергей Сргеевич</fio>
+		<BirthDate>22.10.1966</BirthDate>
+		<department>Marketing</department>
+		<position>Top</position>
+		<paymenttype>per_month</paymenttype>
+		<payment>someFormula1</payment>
+	  
+</worker>
+<worker id="4">
+        <fio>Петров Петр Петрович</fio>
+		<BirthDate>23.03.1995</BirthDate>
+		<department>Technical</department>
+		<position>Employee</position>
+		<paymenttype>per_hour</paymenttype>
+		<payment>someFormula2</payment>
+	  
+</worker>
+</HumanList>

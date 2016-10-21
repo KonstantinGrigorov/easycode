@@ -22,14 +22,14 @@ class m160725_155613_create_profile_table extends Migration
                 'gender' => Schema::TYPE_SMALLINT
             ]
         );
-        $this->addForeignKey(
-                'profile_user', 
-                'profile', 
-                'user_id', 
-                'user', 
-                'id', 
-                'cascade', 
-                'cascade'
+        $this->addForeignKey( //создание связи
+                'profile_user', //название связи
+                'profile', //табл, к-рую связываем
+                'user_id', //поле табл, к-рую связываем
+                'user', //табл, С к-рой связь
+                'id', //поле табл С к-рой связь
+                'cascade', // при удалении автомат удаляется строка у связ табл
+                'cascade' //при изм первичного ключа автомат изм первичный ключ у связ табл
         );
     }
     public function safeDown()

@@ -9,6 +9,7 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\base\InvalidParamException;
+
 class ResetPasswordForm extends Model
 {
     public $password;

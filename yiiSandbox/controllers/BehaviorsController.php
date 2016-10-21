@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
-use yii\filters\AccessControl;
+use yii\filters\AccessControl; //класс фильтра контроля доступа
 use app\components\MyBehaviors;
 
 
@@ -21,10 +21,10 @@ class BehaviorsController extends Controller
                 //},
                 'rules' => [
                     [
-                        'allow' => true,
-                        'controllers' => ['main'],
-                        'actions' => ['reg', 'login', 'activate-account'],
-                        'verbs' => ['GET', 'POST'],
+                        'allow' => true, //разрешить
+                        'controllers' => ['main'], //для контроллера мэйн
+                        'actions' => ['reg', 'login', 'activate-account'], //для каких экшенов
+                        'verbs' => ['GET', 'POST'], //запросы
                         'roles' => ['?']
                     ],
                     [

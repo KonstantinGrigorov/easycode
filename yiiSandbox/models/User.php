@@ -17,6 +17,8 @@ use yii\behaviors\TimestampBehavior;
  * @property string $auth_key
  * @property integer $created_at
  * @property integer $updated_at
+ * @property string $secret_key
+ * 
  * @property Profile $profile
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
@@ -24,9 +26,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
-    const STATUS_DELETED = 0;
-    const STATUS_NOT_ACTIVE = 1;
-    const STATUS_ACTIVE = 10;
+    const STATUS_DELETED = 0;// для заблокированнызх пользователей
+    const STATUS_NOT_ACTIVE = 1; // 
+    const STATUS_ACTIVE = 10; // для активированных пользователей
 
     public $password;
 
@@ -42,12 +44,12 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['username', 'email', 'password'], 'filter', 'filter'=>'trim'],
-            [['username', 'email', 'password'], 'required'],
-            ['email', 'email'], 
+            [['username', 'email', 'status'], 'required'],
+            ['email', 'email'], // валидатор, указывает, что поле должно быть адресом почты
             ['username',  'string', 'min' => 2, 'max' => 255],
             ['password', 'required', 'on' => 'create'],
-            ['username', 'unique', 'message' => 'Это имя занято.'],
-            ['email', 'unique', 'message' => 'Эта почта уже зарегестрирована.'],
+            ['username', 'unique', 'message' => 'Это имя занято!'],
+            ['email', 'unique', 'message' => 'Эта почта уже зарегестрирована!'],
             ['secret_key', 'unique']
         ];
     }

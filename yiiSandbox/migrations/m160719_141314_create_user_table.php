@@ -15,7 +15,7 @@ class m160719_141314_create_user_table extends Migration
     {
         $this->createTable('user', 
             [
-                'id' => Schema::TYPE_PK,
+            'id' => Schema::TYPE_PK,
             'username' => Schema::TYPE_STRING.' NOT NULL',
             'email' => Schema::TYPE_STRING.' NOT NULL',
             'password_hash' => Schema::TYPE_STRING.' NOT NULL',

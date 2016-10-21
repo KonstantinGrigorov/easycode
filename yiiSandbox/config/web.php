@@ -9,7 +9,7 @@ $config = [
     'bootstrap' => ['log'],
     'layout'=>'basic',
     'defaultRoute'=>'main/index',
-    'language'=>'ru_Ru',
+    'language'=>'ru_RU',
     'charset'=>'UTF-8',
     'components' => [
         'request' => [
@@ -18,6 +18,7 @@ $config = [
             'cookieValidationKey' => 'DSFgksdifhiw899734hekfDFGisjdfi9374'
 
         ],
+        
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -34,7 +35,7 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            //'useFileTransport' => true,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -50,7 +51,7 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'enableStrictParsing' => true,
+            'enableStrictParsing' => true, //если true, то прописываем все возможные маршруты в правилах
             'rules' => [
 
                 [
@@ -69,9 +70,9 @@ $config = [
                 'suffix' => '.html'
                 ],
                 [
-                'pattern' => '<controller>/<action>/<id:\d+>',
-                'route' => '<controller>/<action>',
-                'suffix' => ''
+                'pattern' => '<controller>/<action>/<id:\d+>', // шаблон ссылки
+                'route' => '<controller>/<action>', // маршрут для ссылки ссылки
+                'suffix' => ''// суффикс, подставляемый после шаблона ссылки
                 ],
                 [
                 'pattern' => '<controller>/<action>',
@@ -79,8 +80,8 @@ $config = [
                 'suffix' => '.html'
                 ],
                 [
-                'pattern' => '<module>/<controller>/<action>/<id:\d+>',
-                'route' => '<module>/<controller>/<action>',
+                'pattern' => '<module>/<controller>/<action>/<id:\d+>',// шаблон, переменная id заменится ее содержимым ссылки
+                'route' => '<module>/<controller>/<action>', // маршрут, куда передается управление
                 'suffix' => ''
                 ],
                 [

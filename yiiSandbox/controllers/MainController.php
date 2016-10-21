@@ -19,7 +19,7 @@ class MainController extends BehaviorsController
 {
 	
     public $layout = 'basic';
-	public $defaultAction = 'index';
+    public $defaultAction = 'index';
     public function actionIndex()
     {
     	$hello = 'Привет, мир!!!';
@@ -60,8 +60,7 @@ class MainController extends BehaviorsController
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()):
             $model->validate();
-            print_r($model->getErrors());
-            die;
+            
             if ($user = $model->reg()):
                 if ($user->status === User::STATUS_ACTIVE):
                     if (Yii::$app->getUser()->login($user)):
@@ -69,7 +68,7 @@ class MainController extends BehaviorsController
                     endif;
                  else:
                      if($model->sendActivationEmail($user)):
-                        Yii::$app->session->setFlash('success', 'Письмо с активацией отправлено на емайл <strong>'.Html::encode($user->email).'</strong> (проверьте папку спам).');
+                        Yii::$app->session->setFlash('success', 'Письмо с активацией отправлено на почтовый ящик <strong>'.Html::encode($user->email).'</strong> (проверьте папку "спам").');
                     else:
                         Yii::$app->session->setFlash('error', 'Ошибка. Письмо не отправлено.');
                         Yii::error('Ошибка отправки письма.');
@@ -168,7 +167,7 @@ class MainController extends BehaviorsController
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
                 if($model->sendEmail()):
-                    Yii::$app->getSession()->setFlash('warning', 'Проверьте емайл.');
+                    Yii::$app->getSession()->setFlash('warning', 'Проверьте почту.');
                     return $this->goHome();
                 else:
                     Yii::$app->getSession()->setFlash('error', 'Нельзя сбросить пароль.');

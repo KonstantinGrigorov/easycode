@@ -3,9 +3,8 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-//use yii\helpers\Html;
-//use yii\bootstrap\Nav;
-//use yii\bootstrap\NavBar;
+
+
 //use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\bootstrap\NavBar;
@@ -84,7 +83,7 @@ $this->beginPage();
                         [
                         'label' => 'Из коробки <span class="glyphicon glyphicon-inbox"></span>',
                         'items' => [
-                                '<li clas="dropdown-header"> Расширение</li>',
+                                '<li class="dropdown-header"> Расширение</li>',
                                 '<li class="divider"></li>',
                                 [
                                     'label' => 'Перейти к просмотру',
@@ -187,8 +186,9 @@ ActiveForm::begin(
 
     ?>
     <div class="container">
+        <?= AlertWidget::widget() ?>
         <?= $content ?>
-     </div>
+    </div>
 
 </div>
 

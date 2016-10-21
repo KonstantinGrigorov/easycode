@@ -16,20 +16,20 @@ class SendEmailForm extends Model
         return [
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
-            ['email', 'email'],
+            ['email', 'email'], //может быть только имейл-адресом
             ['email', 'exist',
                 'targetClass' => User::className(),
                 'filter' => [
                     'status' => User::STATUS_ACTIVE
                 ],
-                'message' => 'Данный емайл не зарегистрирован.'
+                'message' => 'Данный адрес почты не зарегистрирован.'
             ],
         ];
     }
     public function attributeLabels()
     {
         return [
-            'email' => 'Емайл'
+            'email' => 'Адрес почты'
         ];
     }
     public function sendEmail()
@@ -41,13 +41,13 @@ class SendEmailForm extends Model
                 'email' => $this->email
             ]
         );
-        if($user):
+        if($user): //если пользователь найден
             $user->generateSecretKey();
             if($user->save()):
                 return Yii::$app->mailer->compose('resetPassword', ['user' => $user])
                     ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name.' (отправлено роботом)'])
-                    ->setTo($this->email)
-                    ->setSubject('Сброс пароля для '.Yii::$app->name)
+                    ->setTo($this->email) //кому отправить (указаная в форме почта)
+                    ->setSubject('Сброс пароля для '.Yii::$app->name)//тема письма
                     ->send();
             endif;
         endif;

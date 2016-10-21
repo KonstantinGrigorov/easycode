@@ -10,6 +10,7 @@ echo Html::a(
 
 if (isset($_GET['id']))
 	echo '<p>'.$_GET['id'].'</p>';
+echo '<br>';
 echo Html::a(
 		'Найти статьи за 2015 год',
 		Url::to([

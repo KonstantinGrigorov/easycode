@@ -13,7 +13,8 @@ use yii\base\Behavior;
 use yii\web\Controller;
 /**
  * Description of MyBehaviors
- *
+ * сеттер - устанавливает любое значение для св-ва. Начинается с сет и большой буквы.
+ * геттер - читает значение св-ва класса. 
  * @author Admin
  */
 class MyBehaviors extends Behavior{
