@@ -1,34 +1,31 @@
 <?php
 
-abstract class Worker (
+abstract class Worker {
 
 	public $birthdate;
 	public $department;
 	public $position;
 	public $fio;
 	public $paymenttype;
+	//public $hoursCount;
+	//public $hourRate;
 
-	public function payment(){
-			}
-	)
+	public function __construct($birthdate, $department, $position, $fio, $paymenttype) {
+      $this->birthdate = $birthdate;
+      $this->department = $department;
+      $this->position = $position;
+      $this->fio = $fio;
+      $this->paymenttype = $paymenttype;
+    }
 
-class HourlyPayWorker extends Worker{
-	public $hourRate;
-	public $hoursCount;
-	public function payment(){
-		$pay = $hoursCount*$hourRate;
+    public function payment(){
+    	
+    }
+	
+    	
 	}
 
-}
-
-class MonthlyPayWorker extends Worker{
-	public $monthPay;
-	public function payment() {
-		return $monthPay;
-	}
-}
-
-
+	/**/
 
 
 
