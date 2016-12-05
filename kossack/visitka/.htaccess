@@ -1,0 +1,6 @@
+
+RewriteEngine on
+
+# otherwise forward it to index.php
+RewriteRule ^(.+)?$ http://localhost/my/easycode/kossack/visitka/web/$1
+
